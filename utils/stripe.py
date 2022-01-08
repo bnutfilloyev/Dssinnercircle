@@ -5,7 +5,7 @@ from data.config import STRIPE
 stripe.api_key = STRIPE
 
 
-async def create_link(amount, bot_name):
+async def create_link_stripe(amount, bot_name):
     price = stripe.Price.create(
         unit_amount=amount,
         currency="usd",
@@ -27,7 +27,7 @@ async def create_link(amount, bot_name):
     return [payment.url, payment.payment_intent]
 
 
-async def check_pay(intent_id):
+async def check_status_stripe(intent_id):
     intent = stripe.PaymentIntent.retrieve(
         intent_id
     )
