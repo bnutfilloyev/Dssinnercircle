@@ -10,6 +10,7 @@ MODE = env.str("MODE")
 CLIEND_ID = env.str("CLIEND_ID")
 CLIENT_SECRET = env.str("CLIENT_SECRET")
 CHANEL = env.str("CHANEL")
+STRIPE = env.str("STRIPE")
 
 GROUP_NAME = 'Dssinnercircle PAID GROUP'
 BILLING_MODE = 'recurring'
