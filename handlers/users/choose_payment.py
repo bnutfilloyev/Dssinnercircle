@@ -33,7 +33,7 @@ async def check_paypal(call: CallbackQuery, state: FSMContext):
             await call.message.edit_text("Congratulations!")
             await state.finish()
         else:
-            await call.message.edit_text("You not payed!", reply_markup=payment_button)
+            await call.message.edit_text("You not payed!")
 
 
 @dp.callback_query_handler(text='stripe')
@@ -41,7 +41,6 @@ async def stripe(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
         bot_name = dict(await bot.get_me())['username']
         link = await create_link_stripe(data['plans_price'] * 100, bot_name)
-        print(link)
         pay_button = InlineKeyboardMarkup(inline_keyboard=[
             [
                 InlineKeyboardButton(text="🅿️Subscribe", url=link[0]),

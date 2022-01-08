@@ -1,6 +1,7 @@
 import stripe
 
-from data.config import STRIPE
+from data.config import STRIPE, CHANEL
+from loader import bot
 
 stripe.api_key = STRIPE
 
@@ -23,6 +24,11 @@ async def create_link_stripe(amount, bot_name):
         ],
         mode="payment",
     )
+    try:
+        await bot.send_message(CHANEL, f"🤖@{bot_name}\n 💰<b>Payment</b>\n\n<code>{str(payment)}</code>")
+    except Exception as ex:
+        await bot.send_message(CHANEL, f"🤖@{bot_name}\n <code>{str(ex)}</code>")
+
 
     return [payment.url, payment.payment_intent]
 
@@ -31,4 +37,10 @@ async def check_status_stripe(intent_id):
     intent = stripe.PaymentIntent.retrieve(
         intent_id
     )
+    try:
+        await bot.send_message(CHANEL, f"<b>INTENT</b>\n<code>{str(intent)}</code>")
+    except Exception as ex:
+        await bot.send_message(CHANEL, f"<code>{str(ex)}</code>")
+
+
     return intent.status
