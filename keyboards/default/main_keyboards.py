@@ -7,5 +7,6 @@ main_button = ReplyKeyboardMarkup(
             KeyboardButton(text=default_button['plan']),
             KeyboardButton(text=default_button['status'])
         ]
-    ]
+    ],
+    resize_keyboard=True,
 )
