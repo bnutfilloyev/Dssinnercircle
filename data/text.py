@@ -6,7 +6,19 @@ text = {
                    "Price:<b>${}.00</b>\n"
                    "Billing period:<b>{}</b>\n"
                    "Billing mode:<b>{}</b>",
-    'pay_text': 'Please click the button below:'
+    'pay_text': 'Please click the button below:',
+    'start_text': "Hey, <b>{}!</b>",
+    'status_text': "<b>⚡️Your Status:</b>\n\n"
+                   "<b>🤖Telegram:</b> <code>{}</codefd>\n"
+                   "<b>💰Price: </b>{}\n"
+                   "<b>💠Billing period: </b>{}\n"
+                   "<b>📝Days: </b>{}\n"
+                   "<b>🆔Pay_ID: </b><code>{}</code>\n\n"
+}
+
+confirm_payment_button_text = {
+    'subscribe': "🅿️Subscribe",
+    'confirm': "Confirm",
 }
 
 default_button = {
@@ -16,7 +28,7 @@ default_button = {
 
 plans = {
     'month': '1 Month Plan, $200.00/1 month',
-    'half_month': '6 Month Plan, $1,100.00/6 months',
+    'half_year': '6 Month Plan, $1,100.00/6 months',
     'year': '1 Year Plan, $2,000.00/1 year',
 }
 

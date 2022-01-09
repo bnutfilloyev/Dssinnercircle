@@ -1,45 +1,28 @@
-import paypalrestsdk
+from utils.db_api.mongo import user_db, transaction_db
 
-from data.config import MODE, CLIEND_ID, CLIENT_SECRET
+json_data = {
+    'telegram_id': 1001,
+    'days': 30,
+    'plans': 'month',
+    'status': True,
+}
 
-paypalrestsdk.configure({
-    "mode": MODE,
-    "client_id": CLIEND_ID,
-    "client_secret": CLIENT_SECRET})
+# days = user_db.find_one({'telegram_id': 433751560})
+# if days == None:
+#     days = 0
+# else:
+#     days = days['days']
 
-
-payment = paypalrestsdk.Payment({
-    "intent": "sale",
-    "payer": {"payment_method": "paypal"},
-    "redirect_urls": {
-        "return_url": f"http://t.me/",
-        "cancel_url": f"http://t.me/"},
-    "transactions": [{
-        "item_list": {
-            "items": [{
-                "name": "item",
-                "sku": "item",
-                "price": f"100.00",
-                "currency": "USD",
-                "quantity": 1}]},
-        "amount": {"total": f"100.00", "currency": "USD"},
-        "description": "This is the payment transaction description."}]})
-
-if payment.create():
-    print('Success')
-else:
-    print('Error')
-
-for link in payment.links:
-    if link.rel == "approval_url":
-        approval_url = str(link.href)
-        token = approval_url.split('=')[-1]
-
-print(payment.id)
-print(payment.find())
+# user_data = user_db.update_one({'telegram_id': 433751560}, {
+#     "$set": {
+#         "days": days + 10,
+#         'status': True,
+#         "plan": 'month'
+#     }
+# }, upsert=True)
 
 
-
-
-# print(payment_history.payments)
-# print(payment)
+for i in transaction_db.find({'telegram_id': 433751560}):
+    print(i)
+# print(user_db.find_one({'telegram_id'})['day'])
+# "FSMContextProxy state = <default>, data = {'plans_price': 200, 'plan': 'month', 'pay-id': 'PAYID-MHNKKQY7UT80632R1915603H', 'intenet_id': 'pi_3KFxL6ERl483ddfA0yMyq98Y'}"
