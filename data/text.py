@@ -9,7 +9,7 @@ text = {
     'pay_text': 'Please click the button below:',
     'start_text': "Hey, <b>{}!</b>",
     'status_text': "<b>⚡️Your Status:</b>\n\n"
-                   "<b>🤖Telegram:</b> <code>{}</codefd>\n"
+                   "<b>🤖Telegram:</b> <code>{}</code>\n"
                    "<b>💰Price: </b>{}\n"
                    "<b>💠Billing period: </b>{}\n"
                    "<b>📝Days: </b>{}\n"

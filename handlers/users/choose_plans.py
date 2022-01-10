@@ -3,14 +3,14 @@ import datetime
 from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery
 
+from filters import IsPrivate
 from keyboards.inline.pay_button import payment_button
 from loader import dp
 from data.text import plans_price, text, plans_name, billing_period
 from data.config import GROUP_NAME, BILLING_MODE
-from utils.db_api.mongo import transaction_db
 
 
-@dp.callback_query_handler(text='plans:month')
+@dp.callback_query_handler(IsPrivate(), text='plans:month')
 async def month_plan(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
         await call.message.edit_text(
@@ -21,7 +21,7 @@ async def month_plan(call: CallbackQuery, state: FSMContext):
         data['days'] = 30
 
 
-@dp.callback_query_handler(text='plans:half_year')
+@dp.callback_query_handler(IsPrivate(), text='plans:half_year')
 async def half_month_plan(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
         await call.message.edit_text(
@@ -33,7 +33,7 @@ async def half_month_plan(call: CallbackQuery, state: FSMContext):
 
 
 
-@dp.callback_query_handler(text='plans:year')
+@dp.callback_query_handler(IsPrivate(), text='plans:year')
 async def year_plan(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
         await call.message.edit_text(

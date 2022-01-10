@@ -19,6 +19,7 @@ async def paypal(call: CallbackQuery, state: FSMContext):
                 InlineKeyboardButton(text=confirm_payment_button_text['confirm'], callback_data='confirm_paypal')
             ]
         ])
+
         data['pay-id'] = token[-1]
         data['payment_method'] = 'paypal'
         await call.message.answer(text=text['pay_text'], reply_markup=pay_button)

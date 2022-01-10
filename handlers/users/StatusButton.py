@@ -1,11 +1,12 @@
 from aiogram import types
 
 from data.text import text
+from filters import IsPrivate
 from loader import dp
 from utils.db_api.mongo import user_db, transaction_db
 
 
-@dp.message_handler(text='Status')
+@dp.message_handler(IsPrivate(), text='Status')
 async def status_button(msg: types.Message):
     data = user_db.find_one({'telegram_id': msg.from_user.id})
     if data != None:
