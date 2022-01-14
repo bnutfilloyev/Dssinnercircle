@@ -14,3 +14,5 @@ STRIPE = env.str("STRIPE")
 
 GROUP_NAME = 'Dssinnercircle PAID GROUP'
 BILLING_MODE = 'recurring'
+
+GROUP_ID = "-1001232814282"

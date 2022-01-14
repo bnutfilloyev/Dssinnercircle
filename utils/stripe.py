@@ -6,10 +6,11 @@ from loader import bot
 stripe.api_key = STRIPE
 
 
-async def create_link_stripe(amount, bot_name):
+async def create_link_stripe(amount, bot_name, currency):
+    print(currency)
     price = stripe.Price.create(
         unit_amount=amount,
-        currency="usd",
+        currency=currency.lower(),
         product="prod_KusYEEi1WpoXKX",
     )
 

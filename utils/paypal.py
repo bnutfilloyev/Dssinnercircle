@@ -8,7 +8,8 @@ paypalrestsdk.configure({
     "client_id": CLIEND_ID,
     "client_secret": CLIENT_SECRET})
 
-async def create_token_paypal(amount, bot_name):
+
+async def create_token_paypal(amount, bot_name, currency):
     payment = paypalrestsdk.Payment({
         "intent": "sale",
         "payer": {"payment_method": "paypal"},
@@ -21,9 +22,9 @@ async def create_token_paypal(amount, bot_name):
                     "name": "item",
                     "sku": "item",
                     "price": f"{amount}.00",
-                    "currency": "USD",
+                    "currency": currency,
                     "quantity": 1}]},
-            "amount": {"total": f"{amount}.00", "currency": "USD"},
+            "amount": {"total": f"{amount}.00", "currency": currency},
             "description": "This is the payment transaction description."}]})
 
     if payment.create():
@@ -37,6 +38,7 @@ async def create_token_paypal(amount, bot_name):
             token = approval_url.split('=')[-1]
 
     return token, payment.id
+
 
 async def check_status_paypal(pay_id):
     payment_history = paypalrestsdk.Payment.all()

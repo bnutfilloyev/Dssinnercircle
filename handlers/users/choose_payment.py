@@ -11,15 +11,15 @@ from utils.stripe import create_link_stripe
 @dp.callback_query_handler(text='paypal')
 async def paypal(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
+        await call.answer(cache_time=60)
         bot_name = dict(await bot.get_me())['username']
-        token = await create_token_paypal(data['plans_price'], bot_name)
+        token = await create_token_paypal(data['plans_price'], bot_name, data['currency'])
         pay_button = InlineKeyboardMarkup(inline_keyboard=[
             [
                 InlineKeyboardButton(text=confirm_payment_button_text['subscribe'], url=f'https://www.paypal.com/checkoutnow?token={token[0]}'),
                 InlineKeyboardButton(text=confirm_payment_button_text['confirm'], callback_data='confirm_paypal')
             ]
         ])
-
         data['pay-id'] = token[-1]
         data['payment_method'] = 'paypal'
         await call.message.answer(text=text['pay_text'], reply_markup=pay_button)
@@ -28,8 +28,9 @@ async def paypal(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text='stripe')
 async def stripe(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
+        await call.answer(cache_time=60)
         bot_name = dict(await bot.get_me())['username']
-        link = await create_link_stripe(data['plans_price'] * 100, bot_name)
+        link = await create_link_stripe(int(data['plans_price']) * 100, bot_name, data['currency'])
         pay_button = InlineKeyboardMarkup(inline_keyboard=[
             [
                 InlineKeyboardButton(text=confirm_payment_button_text['subscribe'], url=link[0]),
@@ -43,5 +44,7 @@ async def stripe(call: CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(text='back')
 async def back_button(call: CallbackQuery):
-    await call.message.edit_reply_markup(reply_markup=plansMenu)
-    await call.answer()
+    await call.answer(cache_time=60)
+    await call.message.edit_text(text=text['plan'], reply_markup=plansMenu)
+    await call.answer("Cancel")
+

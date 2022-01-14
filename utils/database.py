@@ -11,6 +11,7 @@ async def database(data, telegram_id):
 
     user_db.update_one({'telegram_id': telegram_id}, {
         "$set": {
+            "full_name": data['full_name'],
             "days": days + data['days'],
             'status': True,
             "plan": data['plan']

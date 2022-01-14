@@ -8,3 +8,4 @@ storage = MemoryStorage()
 database = client['Dssinnercircle']
 user_db = database['users']
 transaction_db = database['transaction']
+plans_price_db = database['plans']

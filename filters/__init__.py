@@ -10,4 +10,3 @@ if __name__ == "filters":
     dp.filters_factory.bind(AdminFilter)
     dp.filters_factory.bind(IsGroup)
     dp.filters_factory.bind(IsPrivate)
-    pass

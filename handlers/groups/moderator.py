@@ -1,10 +1,16 @@
 from aiogram import types
 from aiogram.dispatcher.filters import Command
 
-from filters import IsGroup, AdminFilter
-from loader import dp
+from data.config import GROUP_ID
+from filters import AdminFilter
+from loader import dp, bot
+from utils.db_api.mongo import user_db
 
-@dp.message_handler(IsGroup(), AdminFilter(), Command('check_member'))
-async def get_member(msg: types.Message, telegram_id):
-    data = await msg.chat.kick(user_id=850500610)
-    print(data)
+# Test
+@dp.message_handler(AdminFilter(), Command('kick', prefixes='!/'))
+async def ban_member():
+    data = user_db.find()
+    for i in data:
+        if not i['status']:
+            await bot.kick_chat_member(GROUP_ID, i['telegram_id'])
+
