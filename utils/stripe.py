@@ -10,7 +10,7 @@ async def create_link_stripe(amount, bot_name, currency):
     price = stripe.Price.create(
         unit_amount=amount,
         currency=currency.lower(),
-        product="prod_KusYEEi1WpoXKX",
+        product="prod_KyDBeasX5H30dU",
     )
 
     payment = stripe.checkout.Session.create(

@@ -1,7 +1,9 @@
 from utils.db_api.mongo import plans_price_db
 
 text = {
-    'plan': '<b>Ecom Royals</b>\n\nPlease select your subscription plan:',
+    'plan': '<b>DSS Insider</b>\n\n'
+            'Please select your subscription plan:',
+
     'choose_plan': "<b>{}</b>\n\n"
                    "Your benefits:\n"
                    "✅<b>{}</b>(Access to the group)\n\n"
@@ -11,7 +13,7 @@ text = {
 
     'pay_text': 'Please click the button below:',
 
-    'start_text': "Hey, <b>{}!</b>",
+    'start_text': "Olá, <b>{}!</b>",
 
     'status_text': "<b>⚡️Your Status:</b>\n\n"
                    "<b>🤖Telegram:</b> <code>{}</code>\n"
@@ -79,6 +81,6 @@ billing_period = [
 
 payment_method = {
     'paypal': '🅿️PayPal',
-    'stripe': '🆂Stripe',
+    'stripe': 'Cartão de Crédito',
     'back': '⏪Back'
 }
