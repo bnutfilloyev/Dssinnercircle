@@ -19,4 +19,4 @@ async def status_button(msg: types.Message):
 
         await msg.answer(textback)
     else:
-        await msg.answer("You don't have any active subscriptions at the moment.")
+        await msg.answer("Você não tem subscrições no momento.")

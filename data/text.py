@@ -5,13 +5,13 @@ text = {
             'Please select your subscription plan:',
 
     'choose_plan': "<b>{}</b>\n\n"
-                   "Your benefits:\n"
-                   "✅<b>{}</b>(Access to the group)\n\n"
-                   "Price:<b>{}.00</b>\n"
-                   "Billing period:<b>{}</b>\n"
-                   "Billing mode:<b>{}</b>",
+                   "Tem acesso a:\n"
+                   "✅<b>{}</b>(acesso ao grupo)\n\n"
+                   "Preço:<b>{}.00</b>\n"
+                   "Ciclo de Pagamento:<b>{}</b>\n"
+                   "Tipo de Pagamento:<b>{}</b>",
 
-    'pay_text': 'Please click the button below:',
+    'pay_text': 'Por favor carregue no botão abaixo:',
 
     'start_text': "Olá, <b>{}!</b>",
 
@@ -50,14 +50,14 @@ text = {
 }
 
 confirm_payment_button_text = {
-    'subscribe': "🅿️Subscribe",
-    'confirm': "Confirm",
+    'subscribe': "🅿Subscrever",
+    'confirm': "Confirmar",
 }
 
 default_button = {
-    'plan': 'Plans',
+    'plan': 'Planos',
     'status': 'Status',
-    'info': 'ℹ️Info',
+    'info': 'Informações',
 }
 
 price = plans_price_db.find_one()['plans_price']
