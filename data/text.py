@@ -47,6 +47,19 @@ text = {
             "Anual: 95 € ou R$ 610 (válido por um ano, cancele a qualquer altura) \n\n"
             "Vemo-nos lá dentro!\n\n"
             "Nuno Cabral",
+    "user_status": "Your Status:\n\n"
+                   "<b>💁 Days: </b>{}\n"
+                   "<b>⚠️ Status: </b>{}",
+
+    "help_button": "/start - Inicializa o bot\n"
+                   "/help - Mostra este menu de ajuda\n"
+                   "/info - Disponibiliza todas as informações sobre o grupo DSS Insider e os seus benefícios\n"
+                   "/planos - Esta opção lista todos os planos que pode escolher\n"
+                   "/status - Esta opção dá informação do estado da sua subscrição\n"
+                   "/subscrever - Esta opção lista todos os planos que pode escolher\n" 
+                   "/cancelar - Esta opção cancela a sua subscrição (não será mais cobrado no final do termo da mesma\n"
+,
+
 }
 
 confirm_payment_button_text = {
