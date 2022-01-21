@@ -6,8 +6,9 @@ from aiogram.types import CallbackQuery
 from filters import IsPrivate
 from keyboards.inline.callback_data import plans_callback
 from keyboards.inline.pay_button import payment_button
+from keyboards.inline.plan_keyboards import price as price_new
 from loader import dp
-from data.text import  text, plans_name, billing_period, price
+from data.text import  text, plans_name, billing_period
 from data.config import GROUP_NAME, BILLING_MODE
 
 
@@ -15,10 +16,11 @@ from data.config import GROUP_NAME, BILLING_MODE
 async def month_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
     await call.answer(cache_time=60)
     async with state.proxy() as data:
+        price = await price_new()
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[0],
                                             GROUP_NAME,
-                                            price[0],
+                                            int(price[0]),
                                             billing_period[0],
                                             BILLING_MODE),
             reply_markup=payment_button)
@@ -34,10 +36,11 @@ async def month_plan(call: CallbackQuery, callback_data: dict, state: FSMContext
 async def half_month_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
     await call.answer(cache_time=60)
     async with state.proxy() as data:
+        price = await price_new()
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[1],
                                             GROUP_NAME,
-                                            price[1],
+                                            int(price[1]),
                                             billing_period[1],
                                             BILLING_MODE),
             reply_markup=payment_button)
@@ -52,9 +55,12 @@ async def half_month_plan(call: CallbackQuery, callback_data: dict, state: FSMCo
 async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
     await call.answer(cache_time=60)
     async with state.proxy() as data:
+        price = await price_new()
+
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[2],
-                                            GROUP_NAME, price[2],
+                                            GROUP_NAME,
+                                            int(price[2]),
                                             billing_period[2],
                                             BILLING_MODE),
             reply_markup=payment_button)
@@ -69,9 +75,12 @@ async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext)
 async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
     await call.answer(cache_time=60)
     async with state.proxy() as data:
+        price = await price_new()
+
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[3],
-                                            GROUP_NAME, price[3],
+                                            GROUP_NAME,
+                                            int(price[3]),
                                             billing_period[3],
                                             BILLING_MODE),
             reply_markup=payment_button)

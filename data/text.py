@@ -28,7 +28,7 @@ text = {
     'kick_notification_user': "You have to pay or you will be kicked out of the group.",
 
     "change_plan_price": "To change plan prices, place them in ascending order in the following sequence. "
-                         "e.x 100,1100,2000,3000",
+                         "e.x\n100\n1100\n2000\n3000",
 
     "info": "Bem vindo à porta de entrada do grupo PREMIUM “DSS Insider”, "
             "um grupo que lhe vai abrir novos horizontes para o seu negócios de Dropshipping.\n\n"
@@ -73,16 +73,19 @@ default_button = {
     'info': 'Informações',
 }
 
-price = plans_price_db.find_one()['plans_price']
+async def price():
+    return plans_price_db.find_one()['plans_price']
+
 days = plans_price_db.find_one()['plans_days']
 
 
-plans_price = {
-    'plan1': 'Mensal (€): {},00 €/1 mês'.format(plans_price_db.find_one()['plans_price'][0]),
-    'plan2': 'Mensal (R$): R$ {}.00/1 mês'.format(plans_price_db.find_one()['plans_price'][1]),
-    'plan3': 'Anual (€): {}.00 €/1 ano'.format(plans_price_db.find_one()['plans_price'][2]),
-    'plan4': 'Anual (R$): R$ {}.00/1 ano'.format(plans_price_db.find_one()['plans_price'][3])
-}
+async def plans_price():
+    return {
+        'plan1': 'Mensal (€): {},00 €/1 mês'.format(plans_price_db.find_one()['plans_price'][0]),
+        'plan2': 'Mensal (R$): R$ {}.00/1 mês'.format(plans_price_db.find_one()['plans_price'][1]),
+        'plan3': 'Anual (€): {}.00 €/1 ano'.format(plans_price_db.find_one()['plans_price'][2]),
+        'plan4': 'Anual (R$): R$ {}.00/1 ano'.format(plans_price_db.find_one()['plans_price'][3])
+        }
 
 plans_name = [
     'Mensal (€)', 'Mensal (R$)', 'Anual (€)', 'Anual (R$)',

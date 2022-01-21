@@ -11,7 +11,7 @@ from utils.set_bot_commands import set_default_commands
 
 async def scheduler():
     # aioschedule.every().day.at("00:00").do(check_status_user)
-    aioschedule.every().minute.do(check_status_user)
+    aioschedule.every().day.do(check_status_user)
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(1)

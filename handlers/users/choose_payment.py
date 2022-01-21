@@ -45,6 +45,6 @@ async def stripe(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text='back')
 async def back_button(call: CallbackQuery):
     await call.answer(cache_time=60)
-    await call.message.edit_text(text=text['plan'], reply_markup=plansMenu)
+    await call.message.edit_text(text=text['plan'], reply_markup=await plansMenu())
     await call.answer("Cancel")
 

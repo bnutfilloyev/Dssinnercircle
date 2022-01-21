@@ -1,4 +1,3 @@
-import os
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -6,7 +5,7 @@ from aiogram.dispatcher.filters import Command
 
 from data.text import text
 from filters import AdminFilter
-from keyboards.inline.plan_keyboards import plansMenu
+from keyboards.inline.plan_keyboards import plansMenu, price
 from loader import dp
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
@@ -25,17 +24,18 @@ async def set_price(msg: types.Message):
 @dp.message_handler(state=Form.get_text)
 async def get_price(msg: types.Message, state: FSMContext):
     get_new_plans = msg.text
-    new_plans = get_new_plans.split(',')
-    data = plans_price_db.find_one()
-    res = plans_price_db.find_one_and_update({}, update={
-        '$set':
-            {'plans_price': new_plans,
-             'plans_days': data['plans_days']}
-    }, return_document=True)
+    res = False
+    new_plans = get_new_plans.split('\n')
+    if len(new_plans) == 4:
+        data = plans_price_db.find_one()
+        res = plans_price_db.find_one_and_update({}, update={
+            '$set':
+                {'plans_price': new_plans,
+                 'plans_days': data['plans_days']}
+        }, return_document=True, upsert=True)
 
     if res:
-        print(plansMenu)
-
+        print(price)
         await msg.answer("Success!")
         await state.finish()
     else:
