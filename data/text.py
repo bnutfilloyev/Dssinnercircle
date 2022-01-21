@@ -2,7 +2,7 @@ from utils.db_api.mongo import plans_price_db
 
 text = {
     'plan': '<b>DSS Insider</b>\n\n'
-            'Please select your subscription plan:',
+            'or favor selecione o plano de subscrição:',
 
     'choose_plan': "<b>{}</b>\n\n"
                    "Tem acesso a:\n"
@@ -15,12 +15,12 @@ text = {
 
     'start_text': "Olá, <b>{}!</b>",
 
-    'status_text': "<b>⚡️Your Status:</b>\n\n"
+    'status_text': "<b>⚡️O seu status:</b>\n\n"
                    "<b>🤖Telegram:</b> <code>{}</code>\n"
-                   "<b>💰Price: </b>{}\n"
-                   "<b>💠Billing period: </b>{}\n"
-                   "<b>📝Days: </b>{}\n"
-                   "<b>🆔Pay_ID: </b><code>{}</code>\n\n",
+                   "<b>💰Preço: </b>{}\n"
+                   "<b>💠Ciclo de pagamento: Anual: </b>{}\n"
+                   "<b>📝Dias: </b>{}\n"
+                   "<b>🆔Id_Pagamento: </b><code>{}</code>\n\n",
 
     'kick_notification_admin': "There are those who have to leave the group."
                                "Use the group /kick or <code>!code</code> command to remove them.",
