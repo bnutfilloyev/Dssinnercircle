@@ -43,7 +43,7 @@ text = {
             "- E muito mais\n\n"
             "Escolha entre uma assinatura mensal ou anual.\n\n"
             "Preços:\n\n"
-            "Mensal: 10 € ou R$ 64.50 (válido por um mêscancele a qualquer altura)\n"
+            "Mensal: 10 € ou R$ 64.50 (válido por um mês, cancele a qualquer altura)\n"
             "Anual: 95 € ou R$ 610 (válido por um ano, cancele a qualquer altura) \n\n"
             "Vemo-nos lá dentro!\n\n"
             "Nuno Cabral",

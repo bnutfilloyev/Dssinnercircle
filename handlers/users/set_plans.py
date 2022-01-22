@@ -1,11 +1,9 @@
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.dispatcher.filters import Command
 
 from data.text import text
-from filters import AdminFilter
-from keyboards.inline.plan_keyboards import plansMenu, price
+from keyboards.inline.plan_keyboards import price
 from loader import dp
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
