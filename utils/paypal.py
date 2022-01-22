@@ -21,10 +21,10 @@ async def create_token_paypal(amount, bot_name, currency):
                 "items": [{
                     "name": "item",
                     "sku": "item",
-                    "price": f"{amount}.00",
+                    "price": f"{amount}",
                     "currency": currency,
                     "quantity": 1}]},
-            "amount": {"total": f"{amount}.00", "currency": currency},
+            "amount": {"total": f"{amount}", "currency": currency},
             "description": "This is the payment transaction description."}]})
 
     if payment.create():

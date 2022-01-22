@@ -7,7 +7,7 @@ text = {
     'choose_plan': "<b>{}</b>\n\n"
                    "Tem acesso a:\n"
                    "✅<b>{}</b>(acesso ao grupo)\n\n"
-                   "Preço:<b>{}.00</b>\n"
+                   "Preço:<b>{}</b>\n"
                    "Ciclo de Pagamento:<b>{}</b>\n"
                    "Tipo de Pagamento:<b>{}</b>",
 
@@ -81,10 +81,10 @@ days = plans_price_db.find_one()['plans_days']
 
 async def plans_price():
     return {
-        'plan1': 'Mensal (€): {},00 €/1 mês'.format(plans_price_db.find_one()['plans_price'][0]),
-        'plan2': 'Mensal (R$): R$ {}.00/1 mês'.format(plans_price_db.find_one()['plans_price'][1]),
-        'plan3': 'Anual (€): {}.00 €/1 ano'.format(plans_price_db.find_one()['plans_price'][2]),
-        'plan4': 'Anual (R$): R$ {}.00/1 ano'.format(plans_price_db.find_one()['plans_price'][3])
+        'plan1': 'Mensal (€): {} €/1 mês'.format(plans_price_db.find_one()['plans_price'][0]),
+        'plan2': 'Mensal (R$): R$ {}/1 mês'.format(plans_price_db.find_one()['plans_price'][1]),
+        'plan3': 'Anual (€): {} €/1 ano'.format(plans_price_db.find_one()['plans_price'][2]),
+        'plan4': 'Anual (R$): R$ {}/1 ano'.format(plans_price_db.find_one()['plans_price'][3])
         }
 
 plans_name = [

@@ -8,19 +8,19 @@ from keyboards.inline.callback_data import plans_callback
 from keyboards.inline.pay_button import payment_button
 from keyboards.inline.plan_keyboards import price as price_new
 from loader import dp
-from data.text import  text, plans_name, billing_period
+from data.text import text, plans_name, billing_period
 from data.config import GROUP_NAME, BILLING_MODE
 
 
 @dp.callback_query_handler(plans_callback.filter(item_name='plan1'))
 async def month_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
-    await call.answer(cache_time=60)
+    # await call.answer(cache_time=60)
     async with state.proxy() as data:
         price = await price_new()
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[0],
                                             GROUP_NAME,
-                                            int(price[0]),
+                                            price[0],
                                             billing_period[0],
                                             BILLING_MODE),
             reply_markup=payment_button)
@@ -40,7 +40,7 @@ async def half_month_plan(call: CallbackQuery, callback_data: dict, state: FSMCo
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[1],
                                             GROUP_NAME,
-                                            int(price[1]),
+                                            price[1],
                                             billing_period[1],
                                             BILLING_MODE),
             reply_markup=payment_button)
@@ -53,14 +53,14 @@ async def half_month_plan(call: CallbackQuery, callback_data: dict, state: FSMCo
 
 @dp.callback_query_handler(plans_callback.filter(item_name='plan3'))
 async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
-    await call.answer(cache_time=60)
+    # await call.answer(cache_time=60)
     async with state.proxy() as data:
         price = await price_new()
 
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[2],
                                             GROUP_NAME,
-                                            int(price[2]),
+                                            price[2],
                                             billing_period[2],
                                             BILLING_MODE),
             reply_markup=payment_button)
@@ -73,14 +73,14 @@ async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext)
 
 @dp.callback_query_handler(plans_callback.filter(item_name='plan4'))
 async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
-    await call.answer(cache_time=60)
+    # await call.answer(cache_time=60)
     async with state.proxy() as data:
         price = await price_new()
 
         await call.message.edit_text(
             text=text['choose_plan'].format(plans_name[3],
                                             GROUP_NAME,
-                                            int(price[3]),
+                                            price[3],
                                             billing_period[3],
                                             BILLING_MODE),
             reply_markup=payment_button)
