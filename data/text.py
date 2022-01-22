@@ -2,7 +2,7 @@ from utils.db_api.mongo import plans_price_db
 
 text = {
     'plan': '<b>DSS Insider</b>\n\n'
-            'or favor selecione o plano de subscrição:',
+            'Por favor selecione o plano de subscrição:',
 
     'choose_plan': "<b>{}</b>\n\n"
                    "Tem acesso a:\n"

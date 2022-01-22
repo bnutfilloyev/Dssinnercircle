@@ -28,7 +28,7 @@ async def confirm_stripe(call: CallbackQuery, state: FSMContext):
                 await dp.bot.send_message(CHANEL, str(ex))
         else:
             print(data.as_dict())
-            await call.message.edit_text("You not payed!")
+            await call.message.edit_text("Ainda não efectuou o pagamento!")
 
 
 @dp.callback_query_handler(text='confirm_paypal')
@@ -50,4 +50,4 @@ async def check_paypal(call: CallbackQuery, state: FSMContext):
             await call.message.edit_text("Congratulations! {}".format(await bot.export_chat_invite_link(GROUP_ID)))
             await state.finish()
         else:
-            await call.message.edit_text("Ainda não efectuou o pagamento")
+            await call.message.edit_text("Ainda não efectuou o pagamento!")
