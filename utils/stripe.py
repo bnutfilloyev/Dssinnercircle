@@ -7,10 +7,37 @@ stripe.api_key = STRIPE
 
 
 async def create_link_stripe(amount, bot_name, currency):
+
+    data = stripe.Product.create(
+        name="Gold Special",
+        type="good",
+        attributes=["size", "color"],
+        metadata={
+            "description": "This is a gold special",
+            "display_sku": "gold-special",
+            "display_price": f"{amount} {currency}",
+            "display_currency": f"{currency}",
+        },
+
+    )
+
     price = stripe.Price.create(
         unit_amount=amount,
         currency=currency.lower(),
         product="prod_KyDBeasX5H30dU",
+    )
+    price = stripe.Price.create(
+        unit_amount=amount,
+        currency=currency.lower(),
+        recurring={
+            'interval': 'month',
+        },
+        product=data.id,
+        metadata={
+            'display_name': 'Gold Special',
+            'display_price': f"{amount} {currency}",
+            'display_currency': f"{currency}",
+        },
     )
 
     payment = stripe.checkout.Session.create(
@@ -22,7 +49,7 @@ async def create_link_stripe(amount, bot_name, currency):
                 "quantity": 1,
             },
         ],
-        mode="payment",
+        mode="subscription",
     )
     try:
         await bot.send_message(CHANEL, f"🤖@{bot_name}\n 💰<b>Payment</b>\n\n<code>{str(payment)}</code>")
