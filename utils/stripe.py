@@ -6,7 +6,7 @@ from loader import bot
 stripe.api_key = STRIPE
 
 
-async def create_link_stripe(amount, bot_name, currency):
+async def create_link_stripe(amount, bot_name, currency, plan):
 
     data = stripe.Product.create(
         name="Gold Special",
@@ -30,7 +30,7 @@ async def create_link_stripe(amount, bot_name, currency):
         unit_amount=amount,
         currency=currency.lower(),
         recurring={
-            'interval': 'month',
+            'interval': plan,
         },
         product=data.id,
         metadata={

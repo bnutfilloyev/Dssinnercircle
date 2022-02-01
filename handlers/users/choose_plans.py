@@ -30,6 +30,8 @@ async def month_plan(call: CallbackQuery, callback_data: dict, state: FSMContext
         data['plan'] = callback_data.get('item_name')
         data['days'] = callback_data.get('days')
         data['currency'] = "EUR"
+        data['plan_type'] = "month"
+
 
 
 @dp.callback_query_handler(plans_callback.filter(item_name='plan2'))
@@ -48,6 +50,7 @@ async def half_month_plan(call: CallbackQuery, callback_data: dict, state: FSMCo
         data['plan'] = callback_data.get('item_name')
         data['days'] = callback_data.get('days')
         data['currency'] = "BRL"
+        data['plan_type'] = "year"
 
 
 
@@ -69,7 +72,7 @@ async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext)
         data['plan'] = callback_data.get('item_name')
         data['days'] = callback_data.get('days')
         data['currency'] = "EUR"
-
+        data['plan_type'] = "month"
 
 @dp.callback_query_handler(plans_callback.filter(item_name='plan4'))
 async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext):
@@ -89,4 +92,5 @@ async def year_plan(call: CallbackQuery, callback_data: dict, state: FSMContext)
         data['plan'] = callback_data.get('item_name')
         data['days'] = callback_data.get('days')
         data['currency'] = "BRL"
+        data['plan_type'] = "year"
 

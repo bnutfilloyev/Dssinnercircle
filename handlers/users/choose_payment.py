@@ -29,7 +29,7 @@ async def stripe(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
         bot_name = dict(await bot.get_me())['username']
         print(data)
-        link = await create_link_stripe(int(float(data['plans_price']) * 100), bot_name, data['currency'])
+        link = await create_link_stripe(int(float(data['plans_price']) * 100), bot_name, data['currency'], data['plan_type'])
         pay_button = InlineKeyboardMarkup(inline_keyboard=[
             [
                 InlineKeyboardButton(text=confirm_payment_button_text['subscribe'], url=link[0]),
